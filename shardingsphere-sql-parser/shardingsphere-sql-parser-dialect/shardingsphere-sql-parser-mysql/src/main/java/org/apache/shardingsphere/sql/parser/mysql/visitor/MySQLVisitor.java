@@ -47,6 +47,7 @@ import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.Identif
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.IndexNameContext;
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.IntervalExpressionContext;
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.LiteralsContext;
+import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.MatchExpression_Context;
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.NullValueLiteralsContext;
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.NumberLiteralsContext;
 import org.apache.shardingsphere.sql.parser.autogen.MySQLStatementParser.OrderByClauseContext;
@@ -428,6 +429,9 @@ public abstract class MySQLVisitor extends MySQLStatementBaseVisitor<ASTNode> {
         if (null != ctx.columnName()) {
             return visit(ctx.columnName());
         }
+        if (null != ctx.matchExpression_()) {
+            return visit(ctx.matchExpression_());
+        }
         return visitRemainSimpleExpr(ctx);
     }
     
@@ -583,8 +587,14 @@ public abstract class MySQLVisitor extends MySQLStatementBaseVisitor<ASTNode> {
     }
     
     @Override
+    public final ASTNode visitMatchExpression_(final MatchExpression_Context ctx) {
+        visit(ctx.expr());
+        return new CommonExpressionSegment(ctx.getStart().getStartIndex(), ctx.getStop().getStopIndex(), ctx.getText());
+    }
+    
+    @Override
     public final ASTNode visitCaseExpression(final CaseExpressionContext ctx) {
-        return visit(ctx.simpleExpr());
+        return new OtherLiteralValue(ctx.getText());
     }
     
     @Override

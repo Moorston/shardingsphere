@@ -28,27 +28,43 @@ insertSpecification_
     ;
 
 insertValuesClause
-    : columnNames? (VALUES | VALUE) assignmentValues (COMMA_ assignmentValues)*
+    : columnNames? (VALUES | VALUE) (assignmentValues (COMMA_ assignmentValues)* | rowConstructorList) valueReference_?
     ;
 
 insertSelectClause
-    : columnNames? select
+    : valueReference_? columnNames? select
     ;
 
 onDuplicateKeyClause
     : ON DUPLICATE KEY UPDATE assignment (COMMA_ assignment)*
     ;
 
+valueReference_
+    : AS alias derivedColumns_?
+    ;
+
+derivedColumns_
+    : LP_ alias (COMMA_ alias)* RP_
+    ;
+
 replace
-    : REPLACE replaceSpecification_? INTO? tableName partitionNames_? (insertValuesClause | setAssignmentsClause | insertSelectClause)
+    : REPLACE replaceSpecification_? INTO? tableName partitionNames_? (replaceValuesClause | setAssignmentsClause | replaceSelectClause)
     ;
 
 replaceSpecification_
     : LOW_PRIORITY | DELAYED
     ;
 
+replaceValuesClause
+    : columnNames? (VALUES | VALUE) (assignmentValues (COMMA_ assignmentValues)* | rowConstructorList) valueReference_?
+    ;
+
+replaceSelectClause
+    : valueReference_? columnNames? select
+    ;
+
 update
-    : UPDATE updateSpecification_ tableReferences setAssignmentsClause whereClause? orderByClause? limitClause?
+    : withClause_? UPDATE updateSpecification_ tableReferences setAssignmentsClause whereClause? orderByClause? limitClause?
     ;
 
 updateSpecification_
@@ -60,7 +76,7 @@ assignment
     ;
 
 setAssignmentsClause
-    : SET assignment (COMMA_ assignment)*
+    : valueReference_? SET assignment (COMMA_ assignment)*
     ;
 
 assignmentValues
@@ -144,7 +160,7 @@ loadDataStatement
       ((FIELDS | COLUMNS) selectFieldsInto_+ )?
       ( LINES selectLinesInto_+ )?
       ( IGNORE numberLiterals (LINES | ROWS) )?
-      ( LP_ identifier (COMMA_ identifier)* RP_ )?
+      fieldOrVarSpec?
       (setAssignmentsClause)?
     ;
 
@@ -157,7 +173,7 @@ loadXmlStatement
       (CHARACTER SET identifier)?
       (ROWS IDENTIFIED BY LT_ STRING_ GT_)?
       ( IGNORE numberLiterals (LINES | ROWS) )?
-      ( LP_ identifier (COMMA_ identifier)* RP_ )?
+      fieldOrVarSpec?
       (setAssignmentsClause)?
     ;
 
@@ -190,7 +206,7 @@ unionClause
     ;
 
 selectClause
-    : SELECT selectSpecification* projections fromClause? whereClause? groupByClause? havingClause? windowClause_? orderByClause? limitClause? selectIntoExpression_? lockClause?
+    : LP_? SELECT selectSpecification* projections fromClause? whereClause? groupByClause? havingClause? windowClause_? orderByClause? limitClause? selectIntoExpression_? lockClause? RP_?
     ;
 
 selectSpecification

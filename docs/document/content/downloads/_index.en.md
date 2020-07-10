@@ -1,28 +1,45 @@
 +++
-pre = "<b>5. </b>"
+pre = "<b>6. </b>"
 title = "Downloads"
-weight = 5
+weight = 6
 chapter = true
 +++
 
 ## Latest releases
 
-ShardingSphere is released as source code tarballs with corresponding binary tarballs for convenience. The downloads are distributed via mirror sites and should be checked for tampering using GPG or SHA-512.
+Apache ShardingSphere is released as source code tarballs with corresponding binary tarballs for convenience.
+The downloads are distributed via mirror sites and should be checked for tampering using GPG or SHA-512.
 
-| Version   | Release date | Source download             | Sharding-JDBC download | Sharding-Proxy download | Sharding-UI download |
-| --------- | ------------ | --------------------------- | ----------------------------- | ------------------------------ | ------------------------------ |
-| 4.0.0     | 2020 Jan 13  | [source](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-src.zip) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-src.zip.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-src.zip.sha512))                         | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-jdbc-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-jdbc-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-jdbc-bin.tar.gz.sha512))                           | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-proxy-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-proxy-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-proxy-bin.tar.gz.sha512))                            | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-ui-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-ui-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.0/apache-shardingsphere-incubating-4.0.0-sharding-ui-bin.tar.gz.sha512))                         |
-| 4.0.1     | 2020 Mar 9   | [source](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-src.zip) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-src.zip.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-src.zip.sha512))                         | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-jdbc-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-jdbc-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-jdbc-bin.tar.gz.sha512))                           | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-proxy-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-proxy-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-proxy-bin.tar.gz.sha512))                            | [binary](https://www.apache.org/dyn/closer.cgi?path=incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-ui-bin.tar.gz) ([asc](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-ui-bin.tar.gz.asc) [sha512](https://downloads.apache.org/incubator/shardingsphere/4.0.1/apache-shardingsphere-incubating-4.0.1-sharding-ui-bin.tar.gz.sha512))                         |
+**Apache ShardingSphere**
+
+| Version | Release date | Description | Downloads |
+| - | - | - | - |
+| 4.1.1     | Jun 5, 2020 | Source codes | [[src]](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip) [[asc]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip.asc) [[sha512]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip.sha512) |
+|           |              | ShardingSphere-JDBC Binary Distribution | [[tar]](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-jdbc-bin.tar.gz) [[asc]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-jdbc-bin.tar.gz.asc) [[sha512]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-jdbc-bin.tar.gz.sha512) |
+|           |              | ShardingSphere-Proxy Binary Distribution | [[tar]](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-proxy-bin.tar.gz) [[asc]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-proxy-bin.tar.gz.asc) [[sha512]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-proxy-bin.tar.gz.sha512) |
+|           |              | ShardingSphere-Scaling Binary Distribution | [[tar]](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-scaling-bin.tar.gz) [[asc]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-scaling-bin.tar.gz.asc) [[sha512]](https://downloads.apache.org/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-sharding-scaling-bin.tar.gz.sha512) |
+
+**ShardingSphere UI**
+
+| Version | Release date | Description | Downloads |
+| - | - | - | - |
+| 4.1.1     | Jun 9, 2020 | Source codes | [[src]](https://www.apache.org/dyn/closer.cgi/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-src.zip ) [[asc]](https://downloads.apache.org/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-src.zip.asc) [[sha512]](https://downloads.apache.org/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-src.zip.sha512) |
+|           |              | ShardingSphere-UI Binary Distribution | [[tar]](https://www.apache.org/dyn/closer.cgi/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-bin.tar.gz) [[asc]](https://downloads.apache.org/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-bin.tar.gz.asc) [[sha512]](https://downloads.apache.org/shardingsphere/shardingsphere-ui-4.1.1/apache-shardingsphere-4.1.1-shardingsphere-ui-bin.tar.gz.sha512) |
 
 ## All releases
 
-Find all releases in the [Archive incubating repository](https://archive.apache.org/dist/incubator/shardingsphere/).
+Find all releases in the [Archive repository](https://archive.apache.org/dist/shardingsphere/).
+
+Find all incubator releases in the [Archive incubator repository](https://archive.apache.org/dist/incubator/shardingsphere/).
 
 ## Verify the releases
 
 [PGP signatures KEYS](https://downloads.apache.org/shardingsphere/KEYS)
 
-It is essential that you verify the integrity of the downloaded files using the PGP or SHA signatures. The PGP signatures can be verified using GPG or PGP. Please download the KEYS as well as the asc signature files for relevant distribution. It is recommended to get these files from the main distribution directory and not from the mirrors.
+It is essential that you verify the integrity of the downloaded files using the PGP or SHA signatures.
+The PGP signatures can be verified using GPG or PGP.
+Please download the KEYS as well as the asc signature files for relevant distribution.
+It is recommended to get these files from the main distribution directory and not from the mirrors.
 
 ```shell
 gpg -i KEYS

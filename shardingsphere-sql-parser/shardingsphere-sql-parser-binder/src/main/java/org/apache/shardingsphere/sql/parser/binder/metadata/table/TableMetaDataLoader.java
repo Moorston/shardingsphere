@@ -21,12 +21,14 @@ import java.sql.ResultSet;
 import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.apache.shardingsphere.sql.parser.binder.metadata.MetaDataConnection;
 import org.apache.shardingsphere.sql.parser.binder.metadata.column.ColumnMetaDataLoader;
 import org.apache.shardingsphere.sql.parser.binder.metadata.index.IndexMetaDataLoader;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import org.apache.shardingsphere.sql.parser.binder.metadata.util.JdbcUtil;
 
 /**
  * Table meta data loader.
@@ -44,16 +46,16 @@ public final class TableMetaDataLoader {
      * @throws SQLException SQL exception
      */
     public static Optional<TableMetaData> load(final DataSource dataSource, final String table, final String databaseType) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            if (!isTableExist(connection, connection.getCatalog(), table)) {
+        try (MetaDataConnection connection = new MetaDataConnection(dataSource.getConnection())) {
+            if (!isTableExist(connection, table, databaseType)) {
                 return Optional.empty();
             }
-            return Optional.of(new TableMetaData(ColumnMetaDataLoader.load(connection, table, databaseType), IndexMetaDataLoader.load(connection, table)));
+            return Optional.of(new TableMetaData(ColumnMetaDataLoader.load(connection, table, databaseType), IndexMetaDataLoader.load(connection, table, databaseType)));
         }
     }
     
-    private static boolean isTableExist(final Connection connection, final String catalog, final String table) throws SQLException {
-        try (ResultSet resultSet = connection.getMetaData().getTables(catalog, null, table, null)) {
+    private static boolean isTableExist(final Connection connection, final String table, final String databaseType) throws SQLException {
+        try (ResultSet resultSet = connection.getMetaData().getTables(connection.getCatalog(), JdbcUtil.getSchema(connection, databaseType), table, null)) {
             return resultSet.next();
         }
     }
