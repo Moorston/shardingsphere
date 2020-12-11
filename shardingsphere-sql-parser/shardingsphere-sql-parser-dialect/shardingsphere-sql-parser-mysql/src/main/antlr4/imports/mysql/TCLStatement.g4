@@ -20,16 +20,11 @@ grammar TCLStatement;
 import Symbol, Keyword, MySQLKeyword, Literals, BaseRule;
 
 setTransaction
-    : SET scope_? TRANSACTION transactionCharacteristic (COMMA_ transactionCharacteristic)*
+    : SET scope? TRANSACTION transactionCharacteristic (COMMA_ transactionCharacteristic)*
     ;
 
 setAutoCommit
-    : SET scope_? AUTOCOMMIT EQ_ autoCommitValue
-    ;
-
-scope_
-    : (GLOBAL | PERSIST | PERSIST_ONLY | SESSION)
-    | AT_ AT_ (GLOBAL | PERSIST | PERSIST_ONLY | SESSION) DOT_
+    : SET (AT_? AT_)? scope? DOT_? AUTOCOMMIT EQ_ autoCommitValue
     ;
 
 autoCommitValue
@@ -41,11 +36,11 @@ beginTransaction
     ;
 
 commit
-    : COMMIT optionWork? optionChain? optionRelease?
+    : COMMIT WORK? optionChain? optionRelease?
     ;
 
 rollback
-    : ROLLBACK (optionWork? TO SAVEPOINT? identifier | optionWork? optionChain? optionRelease?)
+    : ROLLBACK (WORK? TO SAVEPOINT? identifier | WORK? optionChain? optionRelease?)
     ;
 
 savepoint
@@ -53,7 +48,7 @@ savepoint
     ;
 
 begin
-    : BEGIN optionWork?
+    : BEGIN WORK?
     ;
 
 lock
@@ -69,29 +64,26 @@ releaseSavepoint
     ;
 
 xa
-    : (START | BEGIN) xid (JOIN | RESUME)
-    | END xid (SUSPEND (FOR MIGRATE)?)?
-    | PREPARE xid
-    | COMMIT xid (ONE PHASE)?
-    | ROLLBACK xid
-    | RECOVER (CONVERT xid)?
+    : XA ((START | BEGIN) xid (JOIN | RESUME)
+        | END xid (SUSPEND (FOR MIGRATE)?)?
+        | PREPARE xid
+        | COMMIT xid (ONE PHASE)?
+        | ROLLBACK xid
+        | RECOVER (CONVERT xid)?
+    )
     ;
 
 transactionCharacteristic
-   : ISOLATION LEVEL level_ | accessMode_ | WITH CONSISTENT SNAPSHOT
+   : ISOLATION LEVEL level | accessMode | WITH CONSISTENT SNAPSHOT
    ;
 
-level_
+level
    : REPEATABLE READ | READ COMMITTED | READ UNCOMMITTED | SERIALIZABLE
    ;
 
-accessMode_
+accessMode
    : READ (WRITE | ONLY)
    ;
-
-optionWork
-    : WORK
-    ;
 
 optionChain
     : AND NO? CHAIN
@@ -110,5 +102,5 @@ lockOption
     ;
 
 xid
-    : STRING_ (COMMA_ STRING_)* numberLiterals?
+    : string_ (COMMA_ string_)* numberLiterals?
     ;

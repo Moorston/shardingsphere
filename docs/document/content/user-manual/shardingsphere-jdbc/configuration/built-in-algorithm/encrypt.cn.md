@@ -3,13 +3,13 @@ title = "加密算法"
 weight = 4
 +++
 
-### MD5 加密算法
+## MD5 加密算法
 
 类型：MD5
 
 可配置属性：无
 
-### AES 加密算法
+## AES 加密算法
 
 类型：AES
 
@@ -17,9 +17,9 @@ weight = 4
 
 | *名称*         | *数据类型* | *说明*        |
 | ------------- | --------- | ------------- |
-| aes.key.value | String    | AES 使用的 KEY |
+| aes-key-value | String    | AES 使用的 KEY |
 
-### RC4 加密算法
+## RC4 加密算法
 
 类型：RC4
 
@@ -27,4 +27,4 @@ weight = 4
 
 | *名称*         | *数据类型* | *说明*        |
 | ------------- | --------- | ------------- |
-| rc4.key.value | String    | RC4 使用的 KEY |
+| rc4-key-value | String    | RC4 使用的 KEY |

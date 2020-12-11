@@ -18,7 +18,7 @@ Apache ShardingSphere 定位为关系型数据库中间件，旨在充分合理�
 它通过关注不变，进而抓住事物本质。关系型数据库当今依然占有巨大市场，是各个公司核心业务的基石，未来也难于撼动，我们目前阶段更加关注在原有基础上的增量，而非颠覆。
 
 Apache ShardingSphere 5.x 版本开始致力于可插拔架构，项目的功能组件能够灵活的以可插拔的方式进行扩展。
-目前，数据分片、读写分离、多数据副本、数据加密、影子库压测等功能，以及对 MySQL、PostgreSQL、SQLServer、Oracle 等 SQL 与协议的支持，均通过插件的方式织入项目。
+目前，数据分片、读写分离、数据加密、影子库压测等功能，以及对 MySQL、PostgreSQL、SQLServer、Oracle 等 SQL 与协议的支持，均通过插件的方式织入项目。
 开发者能够像使用积木一样定制属于自己的独特系统。Apache ShardingSphere 目前已提供数十个 SPI 作为系统的扩展点，而且仍在不断增加中。
 
 ShardingSphere 已于2020年4月16日成为 [Apache 软件基金会](https://apache.org/index.html#projects-list)的顶级项目。
@@ -30,7 +30,7 @@ ShardingSphere 已于2020年4月16日成为 [Apache 软件基金会](https://apa
 [![GitHub release](https://img.shields.io/github/release/apache/shardingsphere.svg)](https://github.com/apache/shardingsphere/releases)
 
 [![Build Status](https://api.travis-ci.org/apache/shardingsphere.svg?branch=master&status=created)](https://travis-ci.org/apache/shardingsphere)
-[![Coverage Status](https://coveralls.io/repos/github/apache/shardingsphere/badge.svg?branch=dev)](https://coveralls.io/github/apache/shardingsphere?branch=dev)
+[![codecov](https://codecov.io/gh/apache/shardingsphere/branch/master/graph/badge.svg)](https://codecov.io/gh/apache/shardingsphere)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/278600ed40ad48e988ab485b439abbcd)](https://www.codacy.com/app/terrymanu/sharding-sphere?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sharding-sphere/sharding-sphere&amp;utm_campaign=Badge_Grade)
 [![OpenTracing-1.0 Badge](https://img.shields.io/badge/OpenTracing--1.0-enabled-blue.svg)](http://opentracing.io)
 [![Skywalking Tracing](https://img.shields.io/badge/Skywalking%20Tracing-enable-brightgreen.svg)](https://github.com/apache/skywalking)
@@ -77,7 +77,7 @@ Database Mesh 的关注重点在于如何将分布式的数据访问应用与数
 
 |           | *ShardingSphere-JDBC* | *ShardingSphere-Proxy* | *ShardingSphere-Sidecar* |
 | --------- | --------------------- | ---------------------- | ------------------------ |
-| 数据库     | 任意                  | MySQL                  | MySQL                    |
+| 数据库     | 任意                  | MySQL/PostgreSQL      | MySQL/PostgreSQL          |
 | 连接消耗数 | 高                    | 低                     | 高                        |
 | 异构语言   | 仅 Java               | 任意                   | 任意                      |
 | 性能       | 损耗低                | 损耗略高                | 损耗低                    |

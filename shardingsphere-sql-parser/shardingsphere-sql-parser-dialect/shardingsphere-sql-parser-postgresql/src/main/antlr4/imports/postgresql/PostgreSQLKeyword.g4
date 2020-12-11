@@ -587,10 +587,6 @@ TSQUERY
     : T S Q U E R Y
     ;
 
-UUID
-    : U U I D
-    ;
-
 XML
     : X M L
     ;
@@ -1379,4 +1375,12 @@ VERBOSE
 
 PARAM
     : P A R A M
+    ;
+
+OUT
+    : O U T
+    ;
+
+INOUT
+    : I N O U T
     ;

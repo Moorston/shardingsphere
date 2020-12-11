@@ -57,16 +57,16 @@ shardingRuleConfig.getTables().add(orderTableRuleConfig);
 
 // 配置分库算法
 Properties dbShardingAlgorithmrProps = new Properties();
-dbShardingAlgorithmrProps.setProperty("algorithm.expression", "ds${user_id % 2}");
+dbShardingAlgorithmrProps.setProperty("algorithm-expression", "ds${user_id % 2}");
 shardingRuleConfig.getShardingAlgorithms().put("dbShardingAlgorithm", new ShardingSphereAlgorithmConfiguration("INLINE", dbShardingAlgorithmrProps));
 
 // 配置分表算法
 Properties tableShardingAlgorithmrProps = new Properties();
-tableShardingAlgorithmrProps.setProperty("algorithm.expression", "t_order${order_id % 2}");
+tableShardingAlgorithmrProps.setProperty("algorithm-expression", "t_order${order_id % 2}");
 shardingRuleConfig.getShardingAlgorithms().put("tableShardingAlgorithm", new ShardingSphereAlgorithmConfiguration("INLINE", tableShardingAlgorithmrProps));
 
 // 创建 ShardingSphereDataSource
-DataSource dataSource = ShardingSphereDataSourceFactory.createDataSource(dataSourceMap, Collections.singleton((shardingRuleConfig), new Properties());
+DataSource dataSource = ShardingSphereDataSourceFactory.createDataSource(dataSourceMap, Collections.singleton(shardingRuleConfig), new Properties());
 ```
 
 ## 使用 ShardingSphereDataSource
@@ -77,14 +77,14 @@ DataSource dataSource = ShardingSphereDataSourceFactory.createDataSource(dataSou
 以原生 JDBC 使用方式为例：
 
 ```java
-DataSource dataSource = ShardingSphereDataSourceFactory.createDataSource(dataSourceMap, Collections.singleton((shardingRuleConfig), new Properties());
+DataSource dataSource = ShardingSphereDataSourceFactory.createDataSource(dataSourceMap, Collections.singleton(shardingRuleConfig), new Properties());
 String sql = "SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?";
 try (
         Connection conn = dataSource.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql)) {
     ps.setInt(1, 10);
     ps.setInt(2, 1000);
-    try (ResultSet rs = preparedStatement.executeQuery()) {
+    try (ResultSet rs = ps.executeQuery()) {
         while(rs.next()) {
             // ...
         }

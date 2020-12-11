@@ -54,22 +54,22 @@ public final class ShardingStrategyConfigurationYamlSwapper implements YamlSwapp
     }
     
     @Override
-    public ShardingStrategyConfiguration swapToObject(final YamlShardingStrategyConfiguration yamlConfiguration) {
+    public ShardingStrategyConfiguration swapToObject(final YamlShardingStrategyConfiguration yamlConfig) {
         int shardingStrategyConfigCount = 0;
         ShardingStrategyConfiguration result = null;
-        if (null != yamlConfiguration.getStandard()) {
+        if (null != yamlConfig.getStandard()) {
             shardingStrategyConfigCount++;
-            result = createStandardShardingStrategyConfiguration(yamlConfiguration.getStandard());
+            result = createStandardShardingStrategyConfiguration(yamlConfig.getStandard());
         }
-        if (null != yamlConfiguration.getComplex()) {
+        if (null != yamlConfig.getComplex()) {
             shardingStrategyConfigCount++;
-            result = createComplexShardingStrategyConfiguration(yamlConfiguration.getComplex());
+            result = createComplexShardingStrategyConfiguration(yamlConfig.getComplex());
         }
-        if (null != yamlConfiguration.getHint()) {
+        if (null != yamlConfig.getHint()) {
             shardingStrategyConfigCount++;
-            result = createHintShardingStrategyConfiguration(yamlConfiguration.getHint());
+            result = createHintShardingStrategyConfiguration(yamlConfig.getHint());
         }
-        if (null != yamlConfiguration.getNone()) {
+        if (null != yamlConfig.getNone()) {
             shardingStrategyConfigCount++;
             result = new NoneShardingStrategyConfiguration();
         }
@@ -97,15 +97,15 @@ public final class ShardingStrategyConfigurationYamlSwapper implements YamlSwapp
         return result;
     }
     
-    private StandardShardingStrategyConfiguration createStandardShardingStrategyConfiguration(final YamlStandardShardingStrategyConfiguration yamlConfiguration) {
-        return new StandardShardingStrategyConfiguration(yamlConfiguration.getShardingColumn(), yamlConfiguration.getShardingAlgorithmName());
+    private StandardShardingStrategyConfiguration createStandardShardingStrategyConfiguration(final YamlStandardShardingStrategyConfiguration yamlConfig) {
+        return new StandardShardingStrategyConfiguration(yamlConfig.getShardingColumn(), yamlConfig.getShardingAlgorithmName());
     }
     
-    private ComplexShardingStrategyConfiguration createComplexShardingStrategyConfiguration(final YamlComplexShardingStrategyConfiguration yamlConfiguration) {
-        return new ComplexShardingStrategyConfiguration(yamlConfiguration.getShardingColumns(), yamlConfiguration.getShardingAlgorithmName());
+    private ComplexShardingStrategyConfiguration createComplexShardingStrategyConfiguration(final YamlComplexShardingStrategyConfiguration yamlConfig) {
+        return new ComplexShardingStrategyConfiguration(yamlConfig.getShardingColumns(), yamlConfig.getShardingAlgorithmName());
     }
     
-    private HintShardingStrategyConfiguration createHintShardingStrategyConfiguration(final YamlHintShardingStrategyConfiguration yamlConfiguration) {
-        return new HintShardingStrategyConfiguration(yamlConfiguration.getShardingAlgorithmName());
+    private HintShardingStrategyConfiguration createHintShardingStrategyConfiguration(final YamlHintShardingStrategyConfiguration yamlConfig) {
+        return new HintShardingStrategyConfiguration(yamlConfig.getShardingAlgorithmName());
     }
 }

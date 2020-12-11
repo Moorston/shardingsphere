@@ -41,11 +41,11 @@ public final class SnowflakeKeyGenerateAlgorithm implements KeyGenerateAlgorithm
     
     public static final long EPOCH;
     
-    private static final String WORKER_ID_KEY = "worker.id";
+    private static final String WORKER_ID_KEY = "worker-id";
     
-    private static final String MAX_VIBRATION_OFFSET_KEY = "max.vibration.offset";
+    private static final String MAX_VIBRATION_OFFSET_KEY = "max-vibration-offset";
     
-    private static final String MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS_KEY = "max.tolerate.time.difference.milliseconds";
+    private static final String MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS_KEY = "max-tolerate-time-difference-milliseconds";
     
     private static final long SEQUENCE_BITS = 12L;
     
@@ -102,7 +102,7 @@ public final class SnowflakeKeyGenerateAlgorithm implements KeyGenerateAlgorithm
     }
     
     private long getWorkerId() {
-        long result = Long.valueOf(props.getOrDefault(WORKER_ID_KEY, WORKER_ID).toString());
+        long result = Long.parseLong(props.getOrDefault(WORKER_ID_KEY, WORKER_ID).toString());
         Preconditions.checkArgument(result >= 0L && result < WORKER_ID_MAX_VALUE, "Illegal worker id.");
         return result;
     }
@@ -114,7 +114,7 @@ public final class SnowflakeKeyGenerateAlgorithm implements KeyGenerateAlgorithm
     }
     
     private int getMaxTolerateTimeDifferenceMilliseconds() {
-        return Integer.valueOf(props.getOrDefault(MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS_KEY, MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS).toString());
+        return Integer.parseInt(props.getOrDefault(MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS_KEY, MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS).toString());
     }
     
     @Override
@@ -135,7 +135,7 @@ public final class SnowflakeKeyGenerateAlgorithm implements KeyGenerateAlgorithm
         return ((currentMilliseconds - EPOCH) << TIMESTAMP_LEFT_SHIFT_BITS) | (workerId << WORKER_ID_LEFT_SHIFT_BITS) | sequence;
     }
     
-    @SneakyThrows
+    @SneakyThrows(InterruptedException.class)
     private boolean waitTolerateTimeDifferenceIfNeed(final long currentMilliseconds) {
         if (lastMilliseconds <= currentMilliseconds) {
             return false;
